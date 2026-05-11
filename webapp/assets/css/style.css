@@ -1,0 +1,276 @@
+/* шрифти: Bebas Neue для заголовків, Mulish для тексту */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Mulish:wght@300;400;600;700&display=swap');
+
+:root {
+    --bg-dark: #140709;
+    --bg-card: rgba(39, 16, 21, 0.85);
+    --gold: #dcb36d;
+    --text-light: #ffffff;
+    --text-muted: #a38d92;
+    --red-live: #e63946;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    display: flex;
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: 'Mulish', sans-serif; /* Основний шрифт для тексту */
+}
+
+/* заголовки, назви команд, рахунок - шрифтом Bebas Neue */
+h1, h2, h3, .logo-container, .team-name, .score, .menu-title, .page-title, .btn-submit, button {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 1.5px;
+}
+
+/* фоновий леопард */
+.leopard-bg {
+    position: fixed;
+    right: -2%;
+    bottom: -5%;
+    height: 80vh;
+    opacity: 0.25; 
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* бокова панель */
+.sidebar {
+    width: 250px; 
+    background-color: var(--bg-dark);
+    border-right: 1px solid rgba(220, 179, 109, 0.2);
+    padding: 20px 15px; /* Зменшили зайвий простір */
+    z-index: 10;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+}
+
+.menu-title {
+    color: #4a2f35;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.league-list { list-style: none; }
+
+.league-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 10px;
+    color: var(--text-muted);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.2s;
+    border-radius: 6px;
+}
+
+.league-item:hover, .league-item.active {
+    color: var(--gold);
+    background-color: rgba(220, 179, 109, 0.05);
+}
+
+.league-item img { width: 20px; height: 20px; object-fit: contain; }
+
+/* основна частина */
+.main-content {
+    flex: 1;
+    padding: 20px 40px;
+    max-width: 900px; /* обмежуємо ширину */
+    position: relative;
+    z-index: 1;
+}
+
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+/* кнопки пошуку */
+.search-bar {
+    background-color: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 8px 15px;
+    border-radius: 6px; 
+    color: white;
+    width: 250px;
+    outline: none;
+    font-size: 13px;
+    transition: 0.2s;
+}
+
+.search-bar:focus { border-color: var(--gold); }
+
+#searchBtn {
+    background-color: var(--gold);
+    color: var(--bg-dark);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px; 
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#searchBtn:hover { opacity: 0.8; }
+
+.top-links a {
+    color: var(--gold);
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    transition: 0.2s;
+}
+
+.top-links a:hover { opacity: 0.7; }
+
+h1.page-title {
+    font-size: 20px; 
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--gold);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+/* вкладки статусів */
+.status-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.status-tab {
+    background: transparent;
+    border: 1px solid rgba(220, 179, 109, 0.3);
+    color: var(--text-muted);
+    padding: 6px 15px;
+    border-radius: 6px; 
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+    transition: 0.2s;
+}
+
+.status-tab:hover, .status-tab.active {
+    background-color: var(--gold);
+    color: var(--bg-dark);
+    border-color: var(--gold);
+}
+
+/* картки матчів */
+.match-card {
+    background-color: var(--bg-card);
+    border: 1px solid rgba(220, 179, 109, 0.1);
+    border-radius: 8px; 
+    padding: 15px 25px; 
+    margin-bottom: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15); 
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.match-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    border-color: rgba(220, 179, 109, 0.3);
+}
+
+/* live матчі */
+.match-card.live-match {
+    border: 1px solid var(--red-live);
+    background-color: rgba(58, 16, 21, 0.85); 
+    box-shadow: 0 4px 12px rgba(230, 57, 70, 0.1); 
+}
+
+.match-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-bottom: 15px;
+}
+
+.match-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.team {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 35%;
+}
+
+.team.away { flex-direction: row-reverse; text-align: right; }
+.team img { width: 45px; height: 45px; object-fit: contain; } 
+
+.team-name {
+    font-size: 15px; 
+    font-weight: 600;
+}
+
+.score-board {
+    text-align: center;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.score {
+    font-size: 28px; /* Зменшили розмір рахунку */
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: white;
+}
+
+.badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.badge-live { background-color: rgba(230, 57, 70, 0.1); color: var(--red-live); border: 1px solid var(--red-live); }
+.badge-planned { background-color: rgba(255, 255, 255, 0.05); color: var(--text-muted); border: 1px solid rgba(255, 255, 255, 0.1); }
+.badge-finished { background-color: rgba(220, 179, 109, 0.1); color: var(--gold); border: 1px solid rgba(220, 179, 109, 0.3); }
+
+/* адмін-таблиці */
+.admin-table { width: 100%; border-collapse: collapse; margin-top: 20px; margin-bottom: 30px; background: rgba(0,0,0,0.3); border-radius: 8px; overflow: hidden; }
+.admin-table th { background: #3a151e; color: var(--gold); text-align: left; padding: 12px; font-size: 11px; text-transform: uppercase; }
+.admin-table td { padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color: #fff; vertical-align: middle; font-size: 13px; }
+.btn-gold-small, .btn-red-small { border-radius: 4px; padding: 6px 12px; font-size: 11px; }
